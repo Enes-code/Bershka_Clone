@@ -31,7 +31,7 @@ export default {
         {
           title: 'KADIN',
           subtitle: 'KADIN KOLEKSİYONU',
-          image: 'https://images.unsplash.com/photo-1524502390806-53894871d37b?w=800&h=700&auto=format&fit=crop'
+          image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.trendyol.com%2Fbershka-kadin-giyim-x-b486-g1-c82&psig=AOvVaw2VXDuIFllP9-8Wavekzs6y&ust=1764233416335000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCLDJ1-K3j5EDFQAAAAAdAAAAABAE'
         },
         {
           title: 'ERKEK',

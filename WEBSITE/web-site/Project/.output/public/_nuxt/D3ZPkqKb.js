@@ -1,0 +1,1 @@
+import{g as n,J as r,j as t,c as o,t as u,k as c,o as p}from"./C75LhAwq.js";const i={style:{padding:"24px"}},m=n({__name:"[slug]",setup(l){const s=r(),e=t(()=>String(s.params.slug||"")),a=t(()=>e.value==="kadin"?"KADIN":e.value==="erkek"?"ERKEK":e.value.toUpperCase());return(_,d)=>(p(),o("div",i,u(c(a))+" sayfası",1))}});export{m as default};
