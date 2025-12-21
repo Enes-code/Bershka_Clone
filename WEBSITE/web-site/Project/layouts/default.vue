@@ -1,28 +1,17 @@
 <template>
-  <div class="page">
-    <HeaderBar />
-    <main class="main">
+  <div class="min-h-screen flex flex-col bg-background text-foreground">
+    <OrganismsHeader />
+
+    <main class="flex-grow container mx-auto p-4">
       <slot />
     </main>
-    <FooterBar />
+
+    <OrganismsFooter />
+    
+    <!-- Basket Sidebar could go here or be global -->
   </div>
 </template>
 
 <script setup lang="ts">
-import HeaderBar from '~/components/organisms/HeaderBar.vue'
-import FooterBar from '~/components/organisms/FooterBar.vue'
+// Default layout
 </script>
-
-<style scoped>
-.page{
-  min-height: 100vh;
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-}
-
-.main{
-  flex: 1;
-}
-</style>
-

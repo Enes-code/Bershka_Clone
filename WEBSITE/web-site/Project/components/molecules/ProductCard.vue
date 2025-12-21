@@ -1,78 +1,49 @@
 <template>
-  <NuxtLink :to="`/product/${product.id}`" class="product-card">
-    <div class="image-container">
-      <BaseImage :src="product.images[0] || placeholderImage" :alt="product.name" object-cover />
-      <div v-if="product.originalPrice" class="discount-badge">
-        %{{ discountPercent }} İndirim
+  <div class="group relative border rounded-lg overflow-hidden bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow">
+    <div class="aspect-square bg-muted relative">
+      <img
+        :src="product.images[0]"
+        :alt="product.name"
+        class="absolute inset-0 h-full w-full object-cover"
+        loading="lazy"
+      />
+      <div v-if="product.isNew" class="absolute top-2 left-2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded">
+        NEW
+      </div>
+      <div v-if="product.discountPercentage" class="absolute top-2 right-2 bg-destructive text-destructive-foreground text-xs px-2 py-1 rounded">
+        -{{ product.discountPercentage }}%
       </div>
     </div>
-    <div class="product-info">
-      <BaseText tag="h4" size="md" weight="medium" class="product-name">
-        {{ product.name }}
-      </BaseText>
-      <BasePrice :price="product.price" :original-price="product.originalPrice" />
+    <div class="p-4 space-y-2">
+      <h3 class="font-semibold text-lg leading-tight">{{ product.name }}</h3>
+      <div class="flex items-center justify-between">
+         <div class="flex flex-col">
+            <span v-if="product.discountPercentage" class="text-xs text-muted-foreground line-through">
+                {{ formatPrice(product.originalPrice || product.price) }}
+            </span>
+            <span class="font-bold text-lg">{{ formatPrice(product.price) }}</span>
+         </div>
+      </div>
+      <AtomsButton class="w-full mt-2" size="sm" @click="$emit('add-to-cart', product)">
+        Add to Cart
+      </AtomsButton>
     </div>
-  </NuxtLink>
+  </div>
 </template>
 
 <script setup lang="ts">
-import type { Product } from '~/types/product'
+import type { IProduct } from '~/types';
 
-interface Props {
-  product: Product
-}
+const props = defineProps<{
+  product: IProduct;
+}>();
 
-const props = defineProps<Props>()
+const emit = defineEmits(['add-to-cart']);
 
-const placeholderImage = 'https://via.placeholder.com/400x500/000000/FFFFFF?text=Product'
-
-const discountPercent = computed(() => {
-  if (!props.product.originalPrice) return 0
-  return Math.round(((props.product.originalPrice - props.product.price) / props.product.originalPrice) * 100)
-})
+const formatPrice = (price: number) => {
+  return new Intl.NumberFormat('en-IE', {
+    style: 'currency',
+    currency: props.product.currency || 'EUR',
+  }).format(price);
+};
 </script>
-
-<style scoped>
-.product-card {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.3s;
-}
-
-.product-card:hover {
-  transform: translateY(-5px);
-}
-
-.image-container {
-  position: relative;
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
-  margin-bottom: 1rem;
-}
-
-.discount-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #e2001a;
-  color: white;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  border-radius: 4px;
-}
-
-.product-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.product-name {
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-</style>
-

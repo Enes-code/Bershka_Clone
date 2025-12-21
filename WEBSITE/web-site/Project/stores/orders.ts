@@ -10,6 +10,10 @@ export const useOrdersStore = defineStore('orders', {
   actions: {
     async createOrder(payload: { userId: string; items: CartItem[]; total: number; currency: Order['currency'] }) {
       const { $db } = useNuxtApp()
+      if (!$db) {
+        console.warn('Firebase not initialized. Please configure .env file.')
+        throw new Error('Firebase not initialized')
+      }
       const ref = await addDoc(collection($db, 'orders'), {
         userId: payload.userId,
         items: payload.items,

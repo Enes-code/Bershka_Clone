@@ -1,47 +1,32 @@
 <template>
-  <div class="product-grid">
-    <ProductCard
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <MoleculesProductCard
       v-for="product in products"
       :key="product.id"
       :product="product"
+      @add-to-cart="handleAddToCart"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import type { Product } from '~/types/product'
+import type { IProduct } from '~/types';
+import { useBasketStore } from '~/stores/useBasketStore';
 
-interface Props {
-  products: Product[]
-}
+defineProps<{
+  products: IProduct[];
+}>();
 
-defineProps<Props>()
+const basketStore = useBasketStore();
+
+const handleAddToCart = (product: IProduct) => {
+    // Defaulting size/color for grid quick add, or open modal
+    // For now, let's just add with defaults or first available
+    const size = product.sizes[0] || 'One Size';
+    const color = product.colors[0] || 'Default';
+    basketStore.addToBasket(product, size, color);
+    
+    // Optional: show toast
+    console.log('Added to cart:', product.name);
+};
 </script>
-
-<style scoped>
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 2rem;
-}
-
-@media (max-width: 1200px) {
-  .product-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .product-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .product-grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
-

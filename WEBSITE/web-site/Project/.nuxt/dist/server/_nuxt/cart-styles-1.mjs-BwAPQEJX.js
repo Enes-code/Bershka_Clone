@@ -1,5 +1,0 @@
-const cart_vue_vue_type_style_index_0_scoped_e0b098a4_lang = ".wrap[data-v-e0b098a4]{margin:24px auto;width:min(900px,calc(100% - 48px))}.title[data-v-e0b098a4]{font-size:22px;margin:0 0 14px}.list[data-v-e0b098a4]{flex-direction:column;margin-top:16px}.list[data-v-e0b098a4],.row[data-v-e0b098a4]{display:flex;gap:14px}.row[data-v-e0b098a4]{border:1px solid #000;padding:12px}.img[data-v-e0b098a4]{background:#eee;height:120px;-o-object-fit:cover;object-fit:cover;width:90px}.info[data-v-e0b098a4]{flex:1}.q[data-v-e0b098a4]{align-items:center;display:flex;gap:10px;margin-top:10px}.q button[data-v-e0b098a4]{background:#fff;border:1px solid #000;cursor:pointer;height:32px;width:32px}.go[data-v-e0b098a4],.total[data-v-e0b098a4]{font-weight:800;margin-top:10px}.go[data-v-e0b098a4]{border:1px solid #000;color:#000;display:inline-block;padding:10px 14px;text-decoration:none}";
-export {
-  cart_vue_vue_type_style_index_0_scoped_e0b098a4_lang as default
-};
-//# sourceMappingURL=cart-styles-1.mjs-BwAPQEJX.js.map

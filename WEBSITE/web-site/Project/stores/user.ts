@@ -8,9 +8,14 @@ export const useUserStore = defineStore('user', () => {
   const error = ref<string | null>(null)
   const isAuthenticated = ref(false)
 
-  const { $db } = useNuxtApp()
+  const nuxtApp = useNuxtApp()
+  const $db = nuxtApp.$db
 
   async function upsertUserProfile(userId: string, userData: Partial<User>) {
+    if (!$db) {
+      console.warn('Firebase not initialized')
+      return
+    }
     loading.value = true
     error.value = null
     try {
@@ -54,6 +59,10 @@ export const useUserStore = defineStore('user', () => {
   }
 
   async function updateUserAddress(userId: string, addressId: string, addressData: Partial<Address>) {
+    if (!$db) {
+      console.warn('Firebase not initialized')
+      return
+    }
     loading.value = true
     error.value = null
     try {

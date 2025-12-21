@@ -1,48 +1,60 @@
 <template>
-  <div class="wrap">
-    <h1 class="title">SEPET</h1>
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold uppercase mb-8">Shopping Basket</h1>
 
-    <div v-if="items.length === 0">Sepet boş.</div>
+    <div v-if="basketStore.items.length === 0" class="text-center py-12">
+      <p class="text-muted-foreground mb-4">Your basket is empty.</p>
+      <AtomsButton to="/">Start Shopping</AtomsButton>
+    </div>
 
-    <div v-else class="list">
-      <div v-for="it in items" :key="it.productId" class="row">
-        <img :src="it.imageUrl" class="img" />
-        <div class="info">
-          <div class="t">{{ it.title }}</div>
-          <div class="p">{{ it.price }} {{ it.currency }}</div>
-
-          <div class="q">
-            <button @click="cart.dec(it.productId)">-</button>
-            <span>{{ it.qty }}</span>
-            <button @click="cart.inc(it.productId)">+</button>
+    <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Basket Items -->
+      <div class="md:col-span-2 space-y-4">
+        <div v-for="(item, index) in basketStore.items" :key="index" class="flex gap-4 border p-4 rounded-lg">
+          <div class="w-24 h-24 bg-muted flex-shrink-0">
+             <img v-if="item.product" :src="item.product.images[0]" class="w-full h-full object-cover rounded" />
+          </div>
+          <div class="flex-grow">
+            <h3 class="font-bold">{{ item.product?.name }}</h3>
+            <p class="text-sm text-muted-foreground">Size: {{ item.selectedSize }} | Color: {{ item.selectedColor }}</p>
+            <div class="mt-2 flex items-center justify-between">
+                <span class="font-bold">{{ formatPrice((item.product?.price || 0) * item.quantity) }}</span>
+                <button @click="basketStore.removeFromBasket(index)" class="text-destructive text-sm hover:underline">Remove</button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="total">Toplam: {{ total }} TRY</div>
-      <NuxtLink class="go" to="/checkout">ÖDEMEYE GİT</NuxtLink>
+      <!-- Summary -->
+      <div class="border p-6 rounded-lg h-fit">
+        <h2 class="font-bold text-xl mb-4">Summary</h2>
+        <div class="flex justify-between mb-2">
+            <span>Subtotal</span>
+            <span>{{ formatPrice(basketStore.totalPrice) }}</span>
+        </div>
+        <div class="flex justify-between mb-4">
+            <span>Shipping</span>
+            <span>Free</span>
+        </div>
+        <div class="border-t pt-4 font-bold text-lg flex justify-between mb-6">
+            <span>Total</span>
+            <span>{{ formatPrice(basketStore.totalPrice) }}</span>
+        </div>
+        <AtomsButton class="w-full">Proceed to Checkout</AtomsButton>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: 'default' })
+import { useBasketStore } from '~/stores/useBasketStore';
 
-const cart = useCartStore()
-const items = computed(() => cart.items)
-const total = computed(() => cart.total)
+const basketStore = useBasketStore();
+
+const formatPrice = (price: number) => {
+  return new Intl.NumberFormat('en-IE', {
+    style: 'currency',
+    currency: 'EUR',
+  }).format(price);
+};
 </script>
-
-<style scoped>
-.wrap{ width:min(900px, calc(100% - 48px)); margin: 24px auto; }
-.title{ font-size:22px; margin:0 0 14px; }
-.list{ margin-top:16px; display:flex; flex-direction:column; gap:14px; }
-.row{ display:flex; gap:14px; border:1px solid #000; padding:12px; }
-.img{ width:90px; height:120px; object-fit:cover; background:#eee; }
-.info{ flex:1; }
-.q{ margin-top:10px; display:flex; align-items:center; gap:10px; }
-.q button{ width:32px; height:32px; border:1px solid #000; background:#fff; cursor:pointer; }
-.total{ font-weight:800; margin-top:10px; }
-.go{ display:inline-block; margin-top:10px; border:1px solid #000; padding:10px 14px; text-decoration:none; color:#000; font-weight:800; }
-</style>
-

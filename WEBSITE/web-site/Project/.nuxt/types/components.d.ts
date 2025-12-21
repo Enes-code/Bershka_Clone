@@ -14,27 +14,37 @@ type HydrationStrategies = {
 type LazyComponent<T> = DefineComponent<HydrationStrategies, {}, {}, {}, {}, {}, {}, { hydrated: () => void }> & T
 
 interface _GlobalComponents {
-  'AtomsBaseIcon': typeof import("../../components/atoms/BaseIcon.vue").default
-  'AtomsBaseImage': typeof import("../../components/atoms/BaseImage.vue").default
-  'AtomsBasePrice': typeof import("../../components/atoms/BasePrice.vue").default
-  'AtomsBaseText': typeof import("../../components/atoms/BaseText.vue").default
+  'AtomsAccessibilityButtons': typeof import("../../components/atoms/AccessibilityButtons.vue").default
   'AtomsButton': typeof import("../../components/atoms/Button.vue").default
-  'AtomsIcon': typeof import("../../components/atoms/Icon.vue").default
-  'AtomsText': typeof import("../../components/atoms/Text.vue").default
-  'MoleculesGenderTile': typeof import("../../components/molecules/GenderTile.vue").default
+  'AtomsHeroLogo': typeof import("../../components/atoms/HeroLogo.vue").default
+  'AtomsInput': typeof import("../../components/atoms/Input.vue").default
+  'AtomsLanguageButtons': typeof import("../../components/atoms/LanguageButtons.vue").default
+  'AtomsLogo': typeof import("../../components/atoms/Logo.vue").default
+  'AtomsMarketDropdown': typeof import("../../components/atoms/MarketDropdown.vue").default
+  'AtomsRegionLanguageButton': typeof import("../../components/atoms/RegionLanguageButton.vue").default
+  'AtomsSkipToContent': typeof import("../../components/atoms/SkipToContent.vue").default
+  'MoleculesHeroSplit': typeof import("../../components/molecules/HeroSplit.vue").default
+  'MoleculesLanguageSelector': typeof import("../../components/molecules/LanguageSelector.vue").default
+  'MoleculesLocationSelector': typeof import("../../components/molecules/LocationSelector.vue").default
   'MoleculesProductCard': typeof import("../../components/molecules/ProductCard.vue").default
-  'MoleculesQuantitySelector': typeof import("../../components/molecules/QuantitySelector.vue").default
-  'MoleculesSearch': typeof import("../../components/molecules/Search.vue").default
-  'MoleculesSearchInput': typeof import("../../components/molecules/SearchInput.vue").default
-  'MoleculesTile': typeof import("../../components/molecules/Tile.vue").default
-  'OrganismsCartList': typeof import("../../components/organisms/CartList.vue").default
+  'MoleculesSearchBar': typeof import("../../components/molecules/SearchBar.vue").default
+  'OrganismsBottomActionBar': typeof import("../../components/organisms/BottomActionBar.vue").default
+  'OrganismsBottomNotifications': typeof import("../../components/organisms/BottomNotifications.vue").default
   'OrganismsFooter': typeof import("../../components/organisms/Footer.vue").default
   'OrganismsFooterBar': typeof import("../../components/organisms/FooterBar.vue").default
+  'OrganismsFooterBottom': typeof import("../../components/organisms/FooterBottom.vue").default
+  'OrganismsFooterLinks': typeof import("../../components/organisms/FooterLinks.vue").default
+  'OrganismsHeader': typeof import("../../components/organisms/Header.vue").default
   'OrganismsHeaderBar': typeof import("../../components/organisms/HeaderBar.vue").default
+  'OrganismsLocationModal': typeof import("../../components/organisms/LocationModal.vue").default
   'OrganismsProductGrid': typeof import("../../components/organisms/ProductGrid.vue").default
-  'SectionsBrand': typeof import("../../components/sections/Brand.vue").default
-  'SectionsGenderTiles': typeof import("../../components/sections/GenderTiles.vue").default
-  'SectionsHomeHero': typeof import("../../components/sections/HomeHero.vue").default
+  'OrganismsTopNotifications': typeof import("../../components/organisms/TopNotifications.vue").default
+  'SectionsCategoryGrid': typeof import("../../components/sections/CategoryGrid.vue").default
+  'SectionsContentSection': typeof import("../../components/sections/ContentSection.vue").default
+  'SectionsFooter': typeof import("../../components/sections/Footer.vue").default
+  'SectionsHero': typeof import("../../components/sections/Hero.vue").default
+  'SectionsMainContent': typeof import("../../components/sections/MainContent.vue").default
+  'SectionsNotificationContainers': typeof import("../../components/sections/NotificationContainers.vue").default
   'NuxtWelcome': typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue").default
   'NuxtLayout': typeof import("../../node_modules/nuxt/dist/app/components/nuxt-layout").default
   'NuxtErrorBoundary': typeof import("../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue").default
@@ -58,27 +68,37 @@ interface _GlobalComponents {
   'Html': typeof import("../../node_modules/nuxt/dist/head/runtime/components").Html
   'Body': typeof import("../../node_modules/nuxt/dist/head/runtime/components").Body
   'NuxtIsland': typeof import("../../node_modules/nuxt/dist/app/components/nuxt-island").default
-  'LazyAtomsBaseIcon': LazyComponent<typeof import("../../components/atoms/BaseIcon.vue").default>
-  'LazyAtomsBaseImage': LazyComponent<typeof import("../../components/atoms/BaseImage.vue").default>
-  'LazyAtomsBasePrice': LazyComponent<typeof import("../../components/atoms/BasePrice.vue").default>
-  'LazyAtomsBaseText': LazyComponent<typeof import("../../components/atoms/BaseText.vue").default>
+  'LazyAtomsAccessibilityButtons': LazyComponent<typeof import("../../components/atoms/AccessibilityButtons.vue").default>
   'LazyAtomsButton': LazyComponent<typeof import("../../components/atoms/Button.vue").default>
-  'LazyAtomsIcon': LazyComponent<typeof import("../../components/atoms/Icon.vue").default>
-  'LazyAtomsText': LazyComponent<typeof import("../../components/atoms/Text.vue").default>
-  'LazyMoleculesGenderTile': LazyComponent<typeof import("../../components/molecules/GenderTile.vue").default>
+  'LazyAtomsHeroLogo': LazyComponent<typeof import("../../components/atoms/HeroLogo.vue").default>
+  'LazyAtomsInput': LazyComponent<typeof import("../../components/atoms/Input.vue").default>
+  'LazyAtomsLanguageButtons': LazyComponent<typeof import("../../components/atoms/LanguageButtons.vue").default>
+  'LazyAtomsLogo': LazyComponent<typeof import("../../components/atoms/Logo.vue").default>
+  'LazyAtomsMarketDropdown': LazyComponent<typeof import("../../components/atoms/MarketDropdown.vue").default>
+  'LazyAtomsRegionLanguageButton': LazyComponent<typeof import("../../components/atoms/RegionLanguageButton.vue").default>
+  'LazyAtomsSkipToContent': LazyComponent<typeof import("../../components/atoms/SkipToContent.vue").default>
+  'LazyMoleculesHeroSplit': LazyComponent<typeof import("../../components/molecules/HeroSplit.vue").default>
+  'LazyMoleculesLanguageSelector': LazyComponent<typeof import("../../components/molecules/LanguageSelector.vue").default>
+  'LazyMoleculesLocationSelector': LazyComponent<typeof import("../../components/molecules/LocationSelector.vue").default>
   'LazyMoleculesProductCard': LazyComponent<typeof import("../../components/molecules/ProductCard.vue").default>
-  'LazyMoleculesQuantitySelector': LazyComponent<typeof import("../../components/molecules/QuantitySelector.vue").default>
-  'LazyMoleculesSearch': LazyComponent<typeof import("../../components/molecules/Search.vue").default>
-  'LazyMoleculesSearchInput': LazyComponent<typeof import("../../components/molecules/SearchInput.vue").default>
-  'LazyMoleculesTile': LazyComponent<typeof import("../../components/molecules/Tile.vue").default>
-  'LazyOrganismsCartList': LazyComponent<typeof import("../../components/organisms/CartList.vue").default>
+  'LazyMoleculesSearchBar': LazyComponent<typeof import("../../components/molecules/SearchBar.vue").default>
+  'LazyOrganismsBottomActionBar': LazyComponent<typeof import("../../components/organisms/BottomActionBar.vue").default>
+  'LazyOrganismsBottomNotifications': LazyComponent<typeof import("../../components/organisms/BottomNotifications.vue").default>
   'LazyOrganismsFooter': LazyComponent<typeof import("../../components/organisms/Footer.vue").default>
   'LazyOrganismsFooterBar': LazyComponent<typeof import("../../components/organisms/FooterBar.vue").default>
+  'LazyOrganismsFooterBottom': LazyComponent<typeof import("../../components/organisms/FooterBottom.vue").default>
+  'LazyOrganismsFooterLinks': LazyComponent<typeof import("../../components/organisms/FooterLinks.vue").default>
+  'LazyOrganismsHeader': LazyComponent<typeof import("../../components/organisms/Header.vue").default>
   'LazyOrganismsHeaderBar': LazyComponent<typeof import("../../components/organisms/HeaderBar.vue").default>
+  'LazyOrganismsLocationModal': LazyComponent<typeof import("../../components/organisms/LocationModal.vue").default>
   'LazyOrganismsProductGrid': LazyComponent<typeof import("../../components/organisms/ProductGrid.vue").default>
-  'LazySectionsBrand': LazyComponent<typeof import("../../components/sections/Brand.vue").default>
-  'LazySectionsGenderTiles': LazyComponent<typeof import("../../components/sections/GenderTiles.vue").default>
-  'LazySectionsHomeHero': LazyComponent<typeof import("../../components/sections/HomeHero.vue").default>
+  'LazyOrganismsTopNotifications': LazyComponent<typeof import("../../components/organisms/TopNotifications.vue").default>
+  'LazySectionsCategoryGrid': LazyComponent<typeof import("../../components/sections/CategoryGrid.vue").default>
+  'LazySectionsContentSection': LazyComponent<typeof import("../../components/sections/ContentSection.vue").default>
+  'LazySectionsFooter': LazyComponent<typeof import("../../components/sections/Footer.vue").default>
+  'LazySectionsHero': LazyComponent<typeof import("../../components/sections/Hero.vue").default>
+  'LazySectionsMainContent': LazyComponent<typeof import("../../components/sections/MainContent.vue").default>
+  'LazySectionsNotificationContainers': LazyComponent<typeof import("../../components/sections/NotificationContainers.vue").default>
   'LazyNuxtWelcome': LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue").default>
   'LazyNuxtLayout': LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/nuxt-layout").default>
   'LazyNuxtErrorBoundary': LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue").default>

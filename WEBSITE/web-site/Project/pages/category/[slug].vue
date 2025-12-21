@@ -1,13 +1,15 @@
-<template><div style="padding:24px">{{ title }} sayfası</div></template>
+<template>
+  <div>
+    <h1>Category: {{ slug }}</h1>
+  </div>
+</template>
+
 <script setup lang="ts">
+import { useProductStore } from '~/stores/useProductStore'
+
 definePageMeta({ layout: 'default' })
 
 const route = useRoute()
 const slug = computed(() => String(route.params.slug || ''))
-const title = computed(() => {
-  if (slug.value === 'kadin') return 'KADIN'
-  if (slug.value === 'erkek') return 'ERKEK'
-  return slug.value.toUpperCase()
-})
+const productStore = useProductStore()
 </script>
-

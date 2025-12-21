@@ -10,6 +10,10 @@ export const useProductsStore = defineStore('products', {
   actions: {
     async fetchByGender(gender: 'kadin' | 'erkek') {
       const { $db } = useNuxtApp()
+      if (!$db) {
+        console.warn('Firebase not initialized. Please configure .env file.')
+        return
+      }
       const q = query(collection($db, 'products'), where('gender', '==', gender))
       const snap = await getDocs(q)
       this.items = snap.docs.map((d) => ({ id: d.id, ...(d.data() as Omit<Product, 'id'>) }))
@@ -17,6 +21,10 @@ export const useProductsStore = defineStore('products', {
 
     async fetchByCategory(categorySlug: string) {
       const { $db } = useNuxtApp()
+      if (!$db) {
+        console.warn('Firebase not initialized. Please configure .env file.')
+        return
+      }
       const q = query(collection($db, 'products'), where('categorySlug', '==', categorySlug))
       const snap = await getDocs(q)
       this.items = snap.docs.map((d) => ({ id: d.id, ...(d.data() as Omit<Product, 'id'>) }))
@@ -24,6 +32,10 @@ export const useProductsStore = defineStore('products', {
 
     async fetchOne(id: string) {
       const { $db } = useNuxtApp()
+      if (!$db) {
+        console.warn('Firebase not initialized. Please configure .env file.')
+        return
+      }
       const ref = doc($db, 'products', id)
       const snap = await getDoc(ref)
       this.active = snap.exists() ? { id: snap.id, ...(snap.data() as Omit<Product, 'id'>) } : null

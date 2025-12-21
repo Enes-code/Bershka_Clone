@@ -1,98 +1,45 @@
 <template>
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h4>MÜŞTERİ HİZMETLERİ</h4>
-        <p>Sıkça Sorulan Sorular</p>
-        <p>İade ve Değişim</p>
-        <p>Teslimat Bilgileri</p>
-        <p>Beden Rehberi</p>
+  <footer class="bg-secondary/20 text-secondary-foreground py-12 mt-12 border-t">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h4 class="font-bold mb-4 uppercase text-sm">Help</h4>
+        <ul class="space-y-2 text-sm text-muted-foreground">
+          <li><a href="#" class="hover:underline">Shop Online</a></li>
+          <li><a href="#" class="hover:underline">Payment</a></li>
+          <li><a href="#" class="hover:underline">Shipping</a></li>
+          <li><a href="#" class="hover:underline">Returns</a></li>
+        </ul>
       </div>
-      <div class="footer-section">
-        <h4>BERSHKA HAKKINDA</h4>
-        <p>Hakkımızda</p>
-        <p>Kariyer</p>
-        <p>Sürdürülebilirlik</p>
-        <p>Basın</p>
+      <div>
+        <h4 class="font-bold mb-4 uppercase text-sm">Company</h4>
+         <ul class="space-y-2 text-sm text-muted-foreground">
+          <li><a href="#" class="hover:underline">About Us</a></li>
+          <li><a href="#" class="hover:underline">Careers</a></li>
+          <li><a href="#" class="hover:underline">Sustainability</a></li>
+        </ul>
       </div>
-      <div class="footer-section">
-        <h4>MAĞAZALARIMIZ</h4>
-        <p>Mağaza Bulucu</p>
-        <p>İstanbul - İstinyePark</p>
-        <p>Ankara - Armada</p>
-        <p>İletişim</p>
+      <div>
+         <h4 class="font-bold mb-4 uppercase text-sm">Social</h4>
+          <ul class="space-y-2 text-sm text-muted-foreground">
+			<li><a href="#" class="hover:underline">Instagram</a></li>
+			<li><a href="#" class="hover:underline">TikTok</a></li>
+			<li><a href="#" class="hover:underline">Spotify</a></li>
+        </ul>
       </div>
-      <div class="footer-section">
-        <h4>BİZİ TAKİP EDİN</h4>
-        <p>Instagram</p>
-        <p>Facebook</p>
-        <p>Twitter</p>
-        <p>TikTok</p>
+      <div>
+        <h4 class="font-bold mb-4 uppercase text-sm">Newsletter</h4>
+        <div class="flex gap-2">
+            <AtomsInput placeholder="Enter your email" class="bg-background" />
+            <AtomsButton>Subscribe</AtomsButton>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2025 BERSHKA. Tüm hakları saklıdır.</p>
-      <p>Bershka - Trendy ve uygun fiyatlı giyim için moda destinasyonunuz</p>
+    <div class="container mx-auto px-4 mt-12 text-center text-xs text-muted-foreground">
+        &copy; {{ new Date().getFullYear() }} Bershka Clone. Academic Project.
     </div>
   </footer>
 </template>
 
 <script setup lang="ts">
+// Organism Footer
 </script>
-
-<style scoped>
-.footer {
-  background: #f5f5f5;
-  border-top: 1px solid #eee;
-  margin-top: 60px;
-}
-
-.footer-content {
-  display: flex;
-  gap: 50px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px 20px;
-}
-
-.footer-section {
-  flex: 1;
-}
-
-.footer-section h4 {
-  margin-bottom: 15px;
-  color: #000;
-  font-weight: 700;
-  font-size: 14px;
-}
-
-.footer-section p {
-  margin: 8px 0;
-  cursor: pointer;
-  color: #666;
-  font-size: 13px;
-}
-
-.footer-section p:hover {
-  color: #000;
-}
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
-  font-size: 12px;
-  color: #666;
-  padding-bottom: 20px;
-}
-
-.footer-bottom p {
-  margin-bottom: 10px;
-}
-
-.footer-bottom p:last-child {
-  font-size: 11px;
-}
-</style>
-

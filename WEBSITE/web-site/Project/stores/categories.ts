@@ -11,6 +11,10 @@ export const useCategoriesStore = defineStore('categories', {
     async fetchCategories() {
       if (this.loaded) return
       const { $db } = useNuxtApp()
+      if (!$db) {
+        console.warn('Firebase not initialized. Please configure .env file.')
+        return
+      }
       const q = query(collection($db, 'categories'), orderBy('order', 'asc'))
       const snap = await getDocs(q)
       this.items = snap.docs.map((d) => ({ id: d.id, ...(d.data() as Omit<Category, 'id'>) }))
