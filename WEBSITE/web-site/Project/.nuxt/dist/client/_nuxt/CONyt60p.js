@@ -1,0 +1,1 @@
+import{q as s,s as c,D as d,E as a}from"./C75LhAwq.js";const n=s("orders",{state:()=>({lastOrderId:null}),actions:{async createOrder(e){const{$db:r}=c(),t=await d(a(r,"orders"),{userId:e.userId,items:e.items,total:e.total,currency:e.currency,createdAt:Date.now(),status:"created"});return this.lastOrderId=t.id,t.id}}});export{n as u};
